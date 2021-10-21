@@ -1,3 +1,3 @@
 # calculator
 
-https://www.abre.ai/tabuuhxcalc
+https://abre.ai/tabuuhxcalc
