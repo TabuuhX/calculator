@@ -106,13 +106,14 @@
                 let pp = document.getElementById('pp').innerText
                 if(!pp) pp = ''
                 if(pp === 'Error!') pp = ''
-                console.log(pp.slice(-1))
                 if(isNaN(v) && pp.length < 14){
                     let pps = pp.slice(-1)
-                    if(pps == '-' || pps == '+' || pps == 'x' || pps == '÷'){
-                        document.getElementById('pp').innerHTML = pp
-                    } else if(pp.length < 14){
-                        document.getElementById('pp').innerHTML = pp + v
+                    if(pp !== ''){
+                        if(pps == 'x' || pps == '÷' || pps == '-' || pps == '+'){
+                            document.getElementById('pp').innerHTML = pp
+                        } else if(pp.length < 14){
+                            document.getElementById('pp').innerHTML = pp + v
+                        }
                     }
                 } else if(pp.length < 14){
                     document.getElementById('pp').innerHTML = pp + v
@@ -149,6 +150,8 @@
     
     
                 if(isNaN(result)) result = 'Error!' 
+                if(result == Infinity) result = 'Error!'
+                if(result.toString().length > 13) result = result.toString().slice(0, 13) + '…'
                 document.getElementById('pp').innerHTML = result 
                 if(result === 'Error!'){ 
                     setColor(3000, 'rgb(255, 0, 0)', 'rgb(255, 0, 0)')
